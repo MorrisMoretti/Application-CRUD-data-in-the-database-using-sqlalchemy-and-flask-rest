@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "==2.2.2"
+pytest = "==7.2.0"
+flask-restful = "==0.3.9"
+flasgger = "~=0.9.5"
+flake8 = "==5.0.4"
+isort = "==5.11.1"
+pre-commit = "==2.20.0"
+flask-migrate = "==4.0.0"
+psycopg2-binary = "==2.9.5"
+sqlalchemy = "==1.4.45"
+names = "~=0.3.0"
+mypy = "*"
+gunicorn = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

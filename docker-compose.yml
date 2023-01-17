@@ -1,0 +1,37 @@
+version: "3.3"
+services:
+  flask:
+    build: .
+    container_name: flask
+    environment:
+      DB_CONNECTION_STRING: "postgresql+psycopg2://user2:Rootmode2@course:5432/course"
+    command: uwsgi --socket 0.0.0.0:5000 --protocol=http -w wsgi:app
+    ports:
+      - '5000:5000'
+    depends_on:
+      - course
+  course:
+    image: postgres
+    container_name: course
+    volumes:
+      - course:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: "course"
+      POSTGRES_USER: "user2"
+      POSTGRES_PASSWORD: "Rootmode2"
+    ports:
+      - "6432:5432"
+  test:
+    image: postgres
+    container_name: test
+    volumes:
+      - test:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: "test_for_course"
+      POSTGRES_USER: "user2"
+      POSTGRES_PASSWORD: "Rootmode2"
+    ports:
+      - "6433:5432"
+volumes:
+  course:
+  test:
